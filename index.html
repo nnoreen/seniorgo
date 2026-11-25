@@ -424,13 +424,6 @@ fieldset { border: 0; min-inline-size: 0; padding: 0; margin: 0 0 17px; }
   font-size: .78em;
   margin-block: -7px 10px;
 }
-.guide-note {
-  margin: -2px auto 14px;
-  max-inline-size: 34em;
-  color: var(--section-ink);
-  font-size: .92em;
-  font-weight: 700;
-}
 .guide-status p { color: var(--muted); }
 .guide-status .action { margin: 12px auto 0; max-inline-size: 22rem; }
 .guide-pending { font-size: .82em; color: var(--muted); }
@@ -477,53 +470,58 @@ fieldset { border: 0; min-inline-size: 0; padding: 0; margin: 0 0 17px; }
 }
 .shot-mark {
   position: absolute;
-  outline: .5cqi solid #c51f2b;
+  outline: .5cqi solid var(--shot-ink);
   border-radius: 1cqi;
 }
-.shot-mark > span {
+.shot-overlay {
+  --shot-pink: #fbf2f6;
+  --shot-ink: #842452;
+}
+.shot-step {
   position: absolute;
-  top: 50%;
-  left: 0;
+  z-index: 1;
+  display: flex;
+  transform: translateY(-100%);
+}
+.shot-step.note-left, .shot-step.note-right { justify-content: flex-end; }
+.shot-step.note-right { transform: translateY(-50%); }
+.shot-step.note-below { transform: none; }
+.shot-label, .shot-note {
+  padding: .65cqi 1.3cqi;
+  border: .35cqi solid var(--shot-ink);
+  border-radius: 1.5cqi;
+  background: var(--shot-pink);
+  color: var(--shot-ink);
+  font: 800 4.2cqi/1.16 var(--font);
+  box-shadow: 0 .3cqi .8cqi #46203635;
+}
+.shot-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2cqi;
+  min-inline-size: 0;
+  text-align: start;
+}
+.shot-number {
+  flex: 0 0 5.4cqi;
   display: grid;
   place-items: center;
-  width: 5.8cqi;
-  height: 5.8cqi;
+  height: 5.4cqi;
   border-radius: 50%;
-  transform: translate(-57%, -50%);
-  background: #a41824;
+  background: var(--shot-ink);
   color: white;
-  font: 800 3.9cqi/1 var(--font);
-  box-shadow: 0 0 0 .35cqi white;
+  font-size: 3.65cqi;
 }
-.shot-overlay.has-notes {
-  --shot-pink: #fbf2f6;
-  --shot-ink: #a02f64;
-}
-.shot-overlay.has-notes .shot-mark { outline: none; }
-.shot-overlay.has-notes .shot-mark > span {
-  width: 7.4cqi;
-  height: 7.4cqi;
-  background: var(--shot-pink);
-  color: var(--shot-ink);
-  font-size: 5cqi;
-  box-shadow: none;
-}
+.shot-step.note-large .shot-label, .shot-callout.large { font-size: 4.75cqi; }
 .shot-note {
   position: absolute;
-  top: 0;
+  z-index: 1;
   left: 3cqi;
-  transform: translateY(-100%);
-  padding: .8cqi 1.4cqi;
-  border-radius: 1.7cqi;
-  background: var(--shot-pink);
-  color: var(--shot-ink);
-  font: 800 4.65cqi/1.2 var(--font);
-  white-space: nowrap;
+  max-inline-size: 94cqi;
+  text-align: start;
 }
-.shot-mark.note-left .shot-note { inset-inline: auto calc(100% + 3cqi); }
-.shot-mark.note-inset .shot-note { left: 18cqi; }
-.shot-mark.note-large .shot-note, .shot-callout.large { font-size: 5.25cqi; }
-.shot-note.shot-callout { transform: none; }
+.shot-frame-note { inset: 3cqi 3cqi auto; }
+.shot-callout { white-space: nowrap; }
 .shot-inset {
   position: absolute;
   left: 9%;
@@ -544,14 +542,9 @@ fieldset { border: 0; min-inline-size: 0; padding: 0; margin: 0 0 17px; }
 }
 .shot-ring.single-ink { border-color: var(--shot-ink); box-shadow: none; }
 .shot-ring.single-ink .shot-note { inset-inline: auto 0; }
-.shot-mark.note-right .shot-note {
-  inset-inline: auto 6cqi;
-  top: 50%;
-  transform: translateY(-50%);
-}
-.shot-mark.note-below .shot-note, .shot-ring .shot-note {
+.shot-ring .shot-note {
   top: calc(100% + .8cqi);
-  transform: none;
+  white-space: nowrap;
 }
 .shot-code {
   position: absolute;
@@ -613,10 +606,6 @@ fieldset { border: 0; min-inline-size: 0; padding: 0; margin: 0 0 17px; }
   .toolbar .brand img { inline-size: 24px; }
 }
 
-.shot-overlay.has-notes .shot-mark > span { top: 50%; transform: translateY(-50%); }
-.shot-overlay.has-notes .shot-mark .shot-note { inset-inline: 8cqi auto; top: 50%; transform: translateY(-50%); max-width: 83cqi; white-space: normal; width: max-content; text-align: left; }
-
-
 .question-box{display:flex;gap:10px;align-items:stretch;margin:0 auto 22px;width:100%;max-width:100%;box-sizing:border-box}.question-box input{flex:1;min-width:0;border:2px solid #ded3c8;border-radius:24px;background:#fffdfa;color:#253447;padding:14px 20px;font:inherit;font-size:.9em;outline-offset:3px}.question-box button{border:0;border-radius:24px;padding:12px 22px;background:#63344e;color:white;font:inherit;font-weight:700;cursor:pointer}.question-status{font-size:.8em;color:#63344e;margin:0 auto 16px}.question-status:empty{display:none}
 
 .qa-answer{text-align:left;background:#fffdfa;border-radius:22px;padding:clamp(14px,3vw,25px);margin:12px 0 24px;box-shadow:var(--shadow);color:#253447}.qa-answer h2{color:#63344e;margin:0 0 12px}.qa-answer p{line-height:1.55;margin:6px 0}.qa-query{overflow-wrap:anywhere;color:var(--muted)}.qa-options{display:grid;gap:10px;margin-top:14px}.qa-option{padding:12px;border:1px solid #e8ded6;border-radius:16px}.qa-option strong{color:#63344e;font-weight:800}.qa-option .action{font-size:.85em;min-height:44px;margin-top:8px;background:#f4e3eb;color:#63344e;box-shadow:none}.qa-disclaimer{font-size:.72em;color:var(--muted)}.question-status:empty{display:none}
@@ -631,14 +620,7 @@ fieldset { border: 0; min-inline-size: 0; padding: 0; margin: 0 0 17px; }
 @media(prefers-reduced-motion:reduce){.home-hero .question-box button{animation:none}}
 .home-hero .question-status:not(:empty){height: min(390px,60dvh);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#b48b9f transparent;padding:4px 4px 8px;box-sizing:border-box;border-radius:18px;background:#fffdfa}
 .home-hero .qa-answer{margin:0;box-shadow:none;padding:14px;background:transparent}
-.guide-preview .shot-note{display:none!important}
-.guide-preview .shot-mark>span{display:none!important}
-.guide-preview .shot-overlay.has-notes .shot-mark{outline:2px solid #a02f64;outline-offset:2px;background:transparent;border-radius:5px}
-.guide-hints.guide-visible{position:static;inline-size:auto;block-size:auto;clip:auto;overflow:visible;white-space:normal;list-style:none;counter-reset:guide-step var(--step-start,0);display:grid;gap:8px;text-align:left;padding:12px 0;margin:0 auto;max-width:40rem}
-.guide-visible li{counter-increment:guide-step;display:flex;align-items:flex-start;gap:10px;line-height:1.5}
-.guide-visible li::before{content:counter(guide-step);flex:0 0 1.65em;height:1.65em;display:grid;place-items:center;background:#fbf2f6;color:#a02f64;border-radius:50%;font-weight:800}
-.guide-extra-visible{position:static;text-align:left;line-height:1.5;color:#63344e;margin:0 auto 12px;max-width:40rem}
-.visual-guide.guide-loading .guide-preview,.visual-guide.guide-loading .guide-visible,.visual-guide.guide-loading .guide-extra-visible,.visual-guide.guide-loading .guide-note{visibility:hidden}
+.visual-guide.guide-loading .guide-preview { visibility: hidden; }
 </style><style>
 /* V18: pink cat-eye gradients, scoped to home cards */
 .home .transit-grid .tile {
@@ -898,7 +880,6 @@ const VISUAL_GUIDES = {
   "bus/arrival": {
     title: "台北等公車APP指南",
     channel: "台北等公車 App 畫面",
-    showNotes: true,
     frames: [
       { image: "assets/guides/bus-app-home.webp", width: 1206, height: 2622,
         callouts: [[5.2, 70.9, "查詢如何從Ａ到Ｂ", "large"]], marks: [
@@ -921,7 +902,6 @@ const VISUAL_GUIDES = {
   },
   "metro/fare": {
     buttonLabel: "台北等公車APP指南",
-    showNotes: true,
     frames: [
       { image: "assets/guides/metro-app-fare.webp", width: 997, height: 2108,
         channel: "愛心（敬老）票價・台北車站起算", marks: [
@@ -937,7 +917,6 @@ const VISUAL_GUIDES = {
     title: "現場機台購票",
     channel: "捷運售票機畫面",
     official: "metroFare",
-    showNotes: true,
     frames: [
       { image: "assets/guides/metro-machine-1.webp", width: 1448, height: 1086, marks: [
         [4.2, 94, 23, 1, "輕觸開始"],
@@ -962,7 +941,6 @@ const VISUAL_GUIDES = {
     buttonLabel: "台北等公車APP指南",
     title: "時刻查詢",
     channel: "台北等公車 App 畫面",
-    showNotes: true,
     frames: [
       { image: "assets/guides/taipei-bus-app-home.webp", width: 997, height: 2108,
         rings: [[54.7, 18.5, 12.6, 8.2]], marks: [
@@ -986,7 +964,6 @@ const VISUAL_GUIDES = {
     title: "現場機台購票",
     channel: "模擬現場機台畫面",
     official: "railMachine",
-    showNotes: true,
     frames: [
       { image: "assets/guides/TRA_step_01.webp", width: 1448, height: 1086, marks: [
         [9, 15, 24, 2, "點購買車票"],
@@ -1014,7 +991,6 @@ const VISUAL_GUIDES = {
   "hsr/time": {
     buttonLabel: "台北等公車APP指南",
     channel: "台北等公車 App 畫面",
-    showNotes: true,
     frames: [
       { image: "assets/guides/taipei-bus-app-home.webp", width: 997, height: 2108,
         rings: [[77, 18.5, 12.6, 8.2]], marks: [
@@ -1035,7 +1011,6 @@ const VISUAL_GUIDES = {
     buttonLabel: "T-EX App指南",
     channel: "T-EX App・使用者提供範例",
     official: "hsrApp",
-    showNotes: true,
     frames: [
       { image: "assets/guides/hsr-buy-1.webp", width: 729, height: 1421, marks: [
         [14.13, 25.33, 72.7, 6.9, "選起訖站"],
@@ -1232,15 +1207,27 @@ function zoomPreview(image, label, descriptionId = "") {
   const description = descriptionId ? ' aria-describedby="' + descriptionId + '"' : "";
   return '<div class="guide-preview" role="group" tabindex="0" aria-label="' + label + '"' + description + '>' + image + '</div>';
 }
-function guideImage(frame, offset, showNotes, hotspot, code) {
+function guideStep(frame, mark, number) {
+  const [x, y, width, height, label, position = "above"] = mark;
+  const left = position === "left" ? 2 :
+    position === "right" ? Math.max(2, Math.min(x, 58)) :
+    Math.max(2, Math.min(x + (position === "inset" ? 18 : 0), 58));
+  const right = position === "left" ? 100 - x : position === "right" ? Math.max(2, 100 - x - width) : 2;
+  const top = position === "below" ? y + height :
+    position === "right" ? y + height / 2 : Math.max(y, frame.width / frame.height * 8);
+  return '<span class="shot-step note-' + position + '" style="left:' + left + '%;right:' + right + '%;top:' + top + '%">' +
+    '<b class="shot-label"><span class="shot-number">' + number + '</span><span>' + label + '</span></b></span>';
+}
+function guideImage(frame, offset, hotspot, code) {
   const rings = (frame.rings ?? []).map(([x, y, width, height, label, style]) =>
     '<span class="shot-ring' + (style ? ' ' + style : '') + '" style="left:' + x + '%;top:' + y + '%;width:' + width + '%;height:' + height + '%">' +
     (label ? '<b class="shot-note">' + label + '</b>' : '') + '</span>'
   ).join("");
-  const markers = frame.marks.map(([x, y, width, height, label, notePosition], index) =>
-    '<span class="shot-mark' + (notePosition ? ' note-' + notePosition : '') + '" style="left:' + x + '%;top:' + y + '%;width:' + width + '%;height:' + height +
-    '%"><span>' + (offset + index + 1) + '</span>' + (showNotes ? '<b class="shot-note">' + label + '</b>' : '') + '</span>'
+  const markers = frame.marks.map(([x, y, width, height]) =>
+    '<span class="shot-mark" style="left:' + x + '%;top:' + y + '%;width:' + width + '%;height:' + height + '%"></span>'
   ).join("");
+  const steps = frame.marks.map((mark, index) => guideStep(frame, mark, offset + index + 1)).join("");
+  const note = frame.note ? '<b class="shot-note shot-frame-note">' + frame.note + '</b>' : "";
   const example = code ? '<span class="shot-code">' + code + '</span><span class="shot-code shot-code-entry">' + code + '</span>' : "";
   const inset = frame.inset ? '<span class="shot-inset"><img src="' +
     frame.inset.image + '" width="' + frame.inset.width + '" height="' + frame.inset.height +
@@ -1250,8 +1237,8 @@ function guideImage(frame, offset, showNotes, hotspot, code) {
     '<b class="shot-note shot-callout' + (style ? ' ' + style : '') + '" style="left:' + x + '%;top:' + y + '%">' + label + '</b>'
   ).join("");
   return '<span class="guide-image"><img src="' + frame.image + '" width="' + frame.width + '" height="' + frame.height +
-    '" alt="" draggable="false"><span class="shot-overlay' + (showNotes ? ' has-notes' : '') +
-    '" aria-hidden="true">' + rings + markers + example + inset + callouts + '</span>' + hotspot + '</span>';
+    '" alt="" draggable="false"><span class="shot-overlay" aria-hidden="true">' +
+    example + inset + rings + markers + steps + callouts + note + '</span>' + hotspot + '</span>';
 }
 function guideScreen(task) {
   const visual = VISUAL_GUIDES[current.type + "/" + current.flow];
@@ -1262,7 +1249,7 @@ function guideScreen(task) {
   const official = external(visual?.official ?? task.official, "前往官方服務", "action primary");
   const officialGuide = task.guideSource !== task.official ? external(task.guideSource, "查看官方說明") : "";
   if (isRailMachine(current) && current.stage === "choose") {
-    const picture = zoomPreview(guideImage(visual.frames[1], 0, false, "", ""),
+    const picture = zoomPreview(guideImage(visual.frames[1], 0, "", ""),
       "台鐵售票機的列車種類畫面，可雙指或用加減鍵縮放");
     return screen("選擇列車種類", picture + '<div class="machine-choices">' +
       button("對號列車", "machine", "reserved") +
@@ -1284,8 +1271,8 @@ function guideScreen(task) {
     '<button type="button" class="machine-start-target" data-action="machine" data-value="choose" aria-label="第 1 步，點購買車票"></button>' : "";
   const code = frame.codeExampleStep !== undefined ?
     Math.random().toString(36).slice(2, 6).padEnd(4, "7").toUpperCase() : "";
-  const image = guideImage(frame, offset, visual.showNotes, hotspot, code);
-  const extraHints = [...(frame.rings ?? []).map(ring => ring[4]), ...(frame.callouts ?? []).map(callout => callout[2])]
+  const image = guideImage(frame, offset, hotspot, code);
+  const extraHints = [frame.note, ...(frame.rings ?? []).map(ring => ring[4]), ...(frame.callouts ?? []).map(callout => callout[2])]
     .filter(Boolean).join("。");
   const hints = frame.marks.map((mark, index) => '<li>' + mark[4] +
     (index === frame.codeExampleStep ? '。範例為 ' + code + '，輸入相同的四個字元。' : "") + '</li>').join("");
@@ -1302,12 +1289,11 @@ function guideScreen(task) {
     machineStart ? button("下一步", "machine", "choose") :
     current.step + 1 < frames.length ? button("下一步", "step", "1") : "";
   const pending = !next && visual.partial ? '<p class="guide-pending">後續截圖尚未完成</p>' + officialGuide : "";
-  const note = frame.note ? '<p class="guide-note">' + frame.note + '</p>' : "";
   return screen(title,
-    '<p class="guide-channel">' + (frame.channel ?? visual.channel) + '</p>' + note + directionChoices +
+    '<p class="guide-channel">' + (frame.channel ?? visual.channel) + '</p>' + directionChoices +
     zoomPreview(image, "操作圖片，可雙指或用加減鍵縮放", descriptions) +
-    (hints ? '<ol id="guide-steps" class="guide-hints guide-visible" style="--step-start:' + offset + '" start="' + (offset + 1) + '">' + hints + '</ol>' : '') +
-    (extraHints ? '<p id="guide-extra" class="guide-extra-visible">' + extraHints + '</p>' : '') +
+    (hints ? '<ol id="guide-steps" class="guide-hints sr-only" start="' + (offset + 1) + '">' + hints + '</ol>' : '') +
+    (extraHints ? '<p id="guide-extra" class="sr-only">' + extraHints + '</p>' : '') +
     '<div class="controls guide-actions">' + previous + next + '</div><div class="sources">' + official + pending + '</div>',
     "visual-guide" + (frame.height > frame.width ? " phone-guide" : ""));
 }

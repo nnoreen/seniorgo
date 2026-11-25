@@ -856,23 +856,24 @@ const BENEFITS = {
 };
 </script><script>"use strict";
 
+// Guide marks position numbered captions. Opt in to an outline only for a specific target.
 const busRoutePlanFrame = {
   image: "assets/guides/bus-app-plan.webp", width: 997, height: 2108, marks: [
-    [12.5, 14.1, 72, 7.4, "填起點和終點"],
-    [87.9, 16, 6.4, 3.2, "點放大鏡查詢", "left"],
+    [12.5, 14.1, 72, 7.4, "填起點和終點", "above", true],
+    [87.9, 16, 6.4, 3.2, "點放大鏡查詢", "left", true],
     [8, 89.5, 83, 1, "比較所需時間和車資"],
   ]
 };
 
 const railMachinePaymentFrames = [
   { image: "assets/guides/TRA_step_05.webp", width: 1448, height: 1086, marks: [
-    [42, 49, 27, 2, "點選＋或−調整數量", "below"],
-    [79, 89, 17, 2, "點確定", "left"],
+    [23, 36.8, 17, 11.6, "點選＋或−調整數量", "below", true],
+    [77.8, 87.1, 20.8, 10.5, "點確定", "left", true],
   ] },
   { image: "assets/guides/TRA_step_06.webp", width: 1448, height: 1086, marks: [
     [12, 17.2, 76, 1, "核對車次與金額"],
     [20, 65, 75, 2, "選付款方式"],
-    [85, 91, 11, 2, "點確定", "left"],
+    [84, 89.8, 14, 7.7, "點確定", "left", true],
   ] },
 ];
 
@@ -889,13 +890,13 @@ const VISUAL_GUIDES = {
         inset: { image: "assets/guides/bus-app-more-keys.webp", width: 936, height: 516,
           arrowPath: "M128 1870 C388 1740 463 1455 350 1238 M344 1265 L350 1238 L375 1250" },
         rings: [[3.7, 88.6, 18.5, 5.8]], callouts: [[31, 76.5, "點「更多」查看其他路線", "large"]], marks: [
-        [15.5, 8.7, 76, 4, "輸入公車路線", "below"],
+        [15.5, 8.7, 76, 4, "輸入公車路線", "below", true],
       ] },
       { image: "assets/guides/bus-app-arrival.webp", width: 997, height: 2108,
         finishLabel: "我懂了",
         rings: [[6, 72.1, 20, 4.8], [68.5, 42.1, 22.2, 4.7, "公車車牌號碼", "single-ink"]],
         marks: [
-        [9, 14, 85, 2.4, "選擇搭車方向", "inset"],
+        [9, 13.5, 85, 3.8, "選擇搭車方向", "inset", true],
         [4.6, 73.3, 90.4, 2, "預計幾分鐘到這站", "right"],
       ] },
     ]
@@ -905,11 +906,11 @@ const VISUAL_GUIDES = {
     frames: [
       { image: "assets/guides/metro-app-fare.webp", width: 997, height: 2108,
         channel: "愛心（敬老）票價・台北車站起算", marks: [
-        [35.5, 13, 28, 3.2, "選愛心（敬老）", "below"],
+        [35.5, 13, 28, 3.2, "選愛心（敬老）", "below", true],
       ] },
       { image: "assets/guides/metro-app-time.webp", width: 997, height: 2108,
         channel: "行駛時間・亞東醫院起算", finishLabel: "我懂了", marks: [
-        [64.5, 13, 28, 3.2, "選行駛時間", "below"],
+        [64.5, 13, 28, 3.2, "選行駛時間", "below", true],
       ] },
     ]
   },
@@ -922,12 +923,12 @@ const VISUAL_GUIDES = {
         [4.2, 94, 23, 1, "輕觸開始"],
       ] },
       { image: "assets/guides/metro-machine-2.webp", width: 1448, height: 1086, marks: [
-        [59, 70.2, 18, 2, "點單程票"],
+        [53.1, 53.3, 36, 31.8, "點單程票", "above", true],
       ] },
       { image: "assets/guides/metro-machine-3.webp", width: 1448, height: 1086, marks: [
-        [56, 42, 33, 4, "選單程票價"],
-        [60.8, 51.5, 33, 4, "路網圖可查票價"],
-        [40, 77.2, 28, 1, "選購買張數", "below"],
+        [3, 40.5, 55, 4, "選單程票價"],
+        [61, 49.3, 37.2, 11.3, "路網圖可查票價", "above", true],
+        [3, 76.5, 28, 1, "選購買張數", "below"],
       ] },
       { image: "assets/guides/metro-machine-4.webp", width: 1448, height: 1086,
         note: "請先選擇到達站，系統才會顯示對應票價。",
@@ -947,12 +948,12 @@ const VISUAL_GUIDES = {
         [53, 17.2, 14, 2, "點火車"],
       ] },
       { image: "assets/guides/rail-app-time-search.webp", width: 997, height: 2108, marks: [
-        [8, 17.8, 71, 10, "選出發站與到達站", "right"],
-        [8, 32.3, 70, 6, "選日期與時間", "right"],
-        [8, 47.8, 76, 4, "點查詢時刻", "below"],
+        [7.8, 17.2, 71, 13.4, "選出發站與到達站", "right", true],
+        [8, 32.3, 70, 6, "選日期與時間", "right", true],
+        [7, 47.3, 86.9, 4.9, "點查詢時刻", "below", true],
       ] },
       { image: "assets/guides/rail-app-time-results.webp", width: 997, height: 2108, marks: [
-        [8.5, 56.3, 66, 3, "點車次看各站時間"],
+        [5, 53, 89, 13.2, "點車次看各站時間", "above", true],
       ] },
       { image: "assets/guides/rail-app-time-stops.webp", width: 997, height: 2108,
         rings: [[45.5, 18.4, 43, 2.8]], marks: [
@@ -966,7 +967,7 @@ const VISUAL_GUIDES = {
     official: "railMachine",
     frames: [
       { image: "assets/guides/TRA_step_01.webp", width: 1448, height: 1086, marks: [
-        [9, 15, 24, 2, "點購買車票"],
+        [4.9, 15, 29.2, 28.8, "點購買車票", "above", true],
       ] },
       { image: "assets/guides/TRA_step_02.webp", width: 1448, height: 1086, marks: [] },
       { image: "assets/guides/TRA_step_03.webp", width: 1448, height: 1086, marks: [
@@ -974,7 +975,7 @@ const VISUAL_GUIDES = {
         [78, 89, 18, 2, "點確定", "left"],
       ] },
       { image: "assets/guides/TRA_step_04.webp", width: 1448, height: 1086, rings: [[89.2, 61.3, 6.7, 8.8]], marks: [
-        [93, 91.5, 2, 2, "點右側票券", "left"],
+        [89.2, 61.3, 6.7, 8.8, "點右側票券", "left"],
       ] },
       ...railMachinePaymentFrames,
     ],
@@ -1013,31 +1014,31 @@ const VISUAL_GUIDES = {
     official: "hsrApp",
     frames: [
       { image: "assets/guides/hsr-buy-1.webp", width: 729, height: 1421, marks: [
-        [14.13, 25.33, 72.7, 6.9, "選起訖站"],
-        [15.09, 39.41, 70.51, 6.12, "選日期與時間"],
-        [15.23, 53.62, 70.51, 5.91, "選票種和張數", "right"],
-        [14.81, 75.3, 70.78, 4.43, "點查詢"],
+        [14.13, 25.33, 72.7, 6.9, "選起訖站", "above", true],
+        [15.09, 39.41, 70.51, 6.12, "選日期與時間", "above", true],
+        [15.23, 53.62, 70.51, 5.91, "選票種和張數", "right", true],
+        [14.81, 75.3, 70.78, 4.43, "點查詢", "above", true],
       ] },
       { image: "assets/guides/hsr-buy-2.webp", width: 729, height: 1421, marks: [
-        [9.88, 60.17, 80.11, 11.26, "選要搭的車次"],
-        [10.56, 88.04, 79.42, 4.57, "可看更早或更晚車次"],
+        [9.88, 60.17, 80.11, 11.26, "選要搭的車次", "above", true],
+        [10.56, 88.04, 79.42, 4.57, "可看更早或更晚車次", "above", true],
       ] },
       { image: "assets/guides/hsr-buy-3.webp", width: 729, height: 1421, codeExampleStep: 3, marks: [
-        [13.99, 16.68, 72.7, 3.8, "填證件資料"],
-        [13.85, 28.57, 72.84, 13.23, "填聯絡資料"],
+        [13.99, 16.68, 72.7, 3.8, "填證件資料", "above", true],
+        [13.85, 28.57, 72.84, 13.23, "填聯絡資料", "above", true],
         [14.27, 49.47, 72.43, 27.94, "會員資料可留空"],
-        [13.85, 78.82, 72.84, 5.35, "填畫面上的驗證碼"],
-        [15.5, 88.53, 68.59, 4.43, "送出訂位"],
+        [13.85, 78.82, 72.84, 5.35, "填畫面上的驗證碼", "above", true],
+        [15.5, 88.53, 68.59, 4.43, "送出訂位", "above", true],
       ] },
       { image: "assets/guides/hsr-buy-4.webp", width: 729, height: 1421, marks: [
-        [13.31, 62.56, 74.35, 3.59, "核對金額"],
-        [9.3, 70.3, 77.53, 5.14, "閱讀後勾選"],
-        [16.32, 77.48, 67.76, 4.57, "確認車次", "below"],
+        [13.31, 62.56, 74.35, 3.59, "核對金額", "above", true],
+        [9.3, 70.3, 77.53, 5.14, "閱讀後勾選", "above", true],
+        [16.32, 77.48, 67.76, 4.57, "確認車次", "below", true],
       ] },
       { image: "assets/guides/hsr-buy-5.webp", width: 729, height: 1421, finishLabel: "我懂了", marks: [
         [14.27, 22.73, 34.57, 11.82, "看付款期限"],
         [16.19, 50.04, 53.22, 4.15, "沒有點數或優惠券可跳過"],
-        [51.3, 87.47, 37.04, 4.08, "立即付款"],
+        [51.3, 87.47, 37.04, 4.08, "立即付款", "above", true],
       ] },
     ]
   },
@@ -1223,7 +1224,7 @@ function guideImage(frame, offset, hotspot, code) {
     '<span class="shot-ring' + (style ? ' ' + style : '') + '" style="left:' + x + '%;top:' + y + '%;width:' + width + '%;height:' + height + '%">' +
     (label ? '<b class="shot-note">' + label + '</b>' : '') + '</span>'
   ).join("");
-  const markers = frame.marks.map(([x, y, width, height]) =>
+  const markers = frame.marks.filter(mark => mark[6] === true).map(([x, y, width, height]) =>
     '<span class="shot-mark" style="left:' + x + '%;top:' + y + '%;width:' + width + '%;height:' + height + '%"></span>'
   ).join("");
   const steps = frame.marks.map((mark, index) => guideStep(frame, mark, offset + index + 1)).join("");
